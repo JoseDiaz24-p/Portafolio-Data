@@ -1,0 +1,6 @@
+services:
+  fraud-pipeline:
+    build: .
+    container_name: contenedor_pipeline_fraude
+    volumes:
+      - ./:/app

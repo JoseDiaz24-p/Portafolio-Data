@@ -1,0 +1,10 @@
+services:
+  fintech-agent:
+    build: .
+    container_name: machbank_data_agent
+    env_file:
+      - .env
+    volumes:
+      - ./database:/app/database
+    stdin_open: true
+    tty: true

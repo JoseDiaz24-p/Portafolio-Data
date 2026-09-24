@@ -1,0 +1,6 @@
+services:
+  weather-pipeline:
+    build: .
+    container_name: weather-data-pipeline
+    env_file:
+      - .env

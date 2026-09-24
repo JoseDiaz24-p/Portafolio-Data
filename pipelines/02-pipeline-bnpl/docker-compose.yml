@@ -1,0 +1,6 @@
+services:
+  bnpl-pipeline:
+    build: .
+    container_name: contenedor_pipeline_bnpl
+    volumes:
+      - ./:/app
