@@ -3,8 +3,13 @@ name: Tests
 on:
   push:
     branches: ["main"]
+
   pull_request:
     branches: ["main"]
+
+defaults:
+  run:
+    working-directory: data-engineer/05-s3-parquet-duckdb-pipeline
 
 jobs:
   test:
