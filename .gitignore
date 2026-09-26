@@ -15,6 +15,10 @@ __pycache__/
 # Logs
 *.log
 
+#csv
+# Archivos generados
+**/output/*.csv
+
 # Entornos virtuales
 venv/
 .venv/
