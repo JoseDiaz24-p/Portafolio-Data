@@ -15,9 +15,16 @@ __pycache__/
 # Logs
 *.log
 
+# Datasets locales
+**/data/*.xlsx
+
+# Archivos temporales de Excel
+**/~$*.xlsx
+
 #csv
 # Archivos generados
 **/output/*.csv
+
 
 # Entornos virtuales
 venv/
