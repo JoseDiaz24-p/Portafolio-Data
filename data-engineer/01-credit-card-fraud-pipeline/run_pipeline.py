@@ -1,46 +1,40 @@
-import os
-
-from src.extract import DATA_RAW, extract_data, get_logger
-from src.load import load_data
+from src.extract import DATA_RAW, get_logger, extract_data
 from src.transform import transform_data
+from src.load import load_data
 
 
-BASE_DIR = os.path.dirname(
-    os.path.abspath(__file__)
-)
+def main() -> None:
+    logger = get_logger()
 
-DB_OUTPUT = os.path.join(
-    BASE_DIR,
-    "fraud_warehouse.db"
-)
+    logger.info("Iniciando pipeline de fraude...")
 
+    # ----------------------------------------------------
+    # 1. Extract
+    # ----------------------------------------------------
 
-logger = get_logger()
+    df = extract_data(DATA_RAW)
 
+    # ----------------------------------------------------
+    # 2. Transform
+    # ----------------------------------------------------
 
-def run_pipeline() -> None:
-    try:
-        logger.info("Iniciando pipeline de fraude...")
+    df_transformado = transform_data(df)
 
-        raw_df = extract_data(DATA_RAW)
+    # ----------------------------------------------------
+    # 3. Load
+    # ----------------------------------------------------
 
-        clean_df = transform_data(raw_df)
+    db_path = "fraud_warehouse.db"
 
-        load_data(
-            clean_df,
-            DB_OUTPUT
-        )
+    load_data(
+        df_transformado,
+        db_path
+    )
 
-        logger.info(
-            "Pipeline de fraude ejecutado exitosamente."
-        )
-
-    except Exception as error:
-        logger.critical(
-            f"Error en el pipeline: {error}"
-        )
-        raise
+    logger.info(
+        "Pipeline de fraude ejecutado exitosamente."
+    )
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    main()
