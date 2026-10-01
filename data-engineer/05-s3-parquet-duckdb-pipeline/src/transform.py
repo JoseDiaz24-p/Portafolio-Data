@@ -1,7 +1,7 @@
 import pandas as pd
 
 
-def validar_datos(df: pd.DataFrame ):
+def validar_datos(df: pd.DataFrame):
     columnas_requeridas = [
             "VendorID",
             "tpep_pickup_datetime",
